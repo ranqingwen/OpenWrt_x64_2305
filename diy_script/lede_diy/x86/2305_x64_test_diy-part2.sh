@@ -57,6 +57,9 @@ if [ "$curl_ver" != "8.9.1" ]; then
     cp -rf $GITHUB_WORKSPACE/personal/curl feeds/packages/net/curl
 fi
 
+# 添加插件
+merge_package main https://github.com/gxnas/OpenWrt_Build_x64_Packages package/gxnas-packages luci-app-tailscale luci-app-poweroff
+
 # 报错修复
 rm -rf feeds/packages/utils/v2dat
 rm -rf package/feeds/packages/adguardhome
