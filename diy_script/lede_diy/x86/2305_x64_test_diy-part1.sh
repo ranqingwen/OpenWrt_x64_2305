@@ -6,6 +6,10 @@
 # By: GXNAS
 #===============================================
 
+# Add a feed source
+sed -i "/helloworld/d" feeds.conf.default
+sed -i '$a src-git nihaoya9527 https://github.com/nihaoya9527/OpenWrt_Build_x64_Packages' feeds.conf.default
+
 mkdir wget
 
 cat>rename.sh<<-\EOF
