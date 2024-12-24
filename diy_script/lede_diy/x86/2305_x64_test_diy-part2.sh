@@ -57,11 +57,6 @@ if [ "$curl_ver" != "8.9.1" ]; then
     cp -rf $GITHUB_WORKSPACE/personal/curl feeds/packages/net/curl
 fi
 
-# 添加插件
-#sed -i '$a src-git gxnaspackage https://github.com/gxnas/OpenWrt_Build_x64_Packages' feeds.conf.default
-#rm -rf feeds/gxnaspackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
-merge_package main https://github.com/gxnas/OpenWrt_Build_x64_Packages package/gxnas-packages luci-app-tailscale luci-app-poweroff luci-app-onliner luci-app-partexp luci-app-store luci-app-ssr-plus luci-app-serverchan luci-app-wechatpush luci-app-wechatpush merge_package luci-app-tailscale luci-app-poweroff luci-app-onliner luci-app-partexp luci-app-ssr-plus luci-app-control-timewol luci-app-control-webrestriction luci-app-control-weburl luci-app-serverchan luci-app-store luci-app-wechatpush luci-app-homeproxy luci-app-adguardhome luci-app-turboacc lua-maxminddb luci-app-adbyby-plus luci-app-frpc luci-app-frps luci-app-mihomo mihomo mosdns luci-app-mosdns luci-app-passwall luci-app-passwall2 luci-app-openclash luci-theme-argon luci-app-argon-config
-
 # 更改argon主题背景
 cp -f $GITHUB_WORKSPACE/personal/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
