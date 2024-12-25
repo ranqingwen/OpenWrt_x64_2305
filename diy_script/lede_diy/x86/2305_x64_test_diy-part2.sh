@@ -20,8 +20,8 @@ sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-GXNAS'"
 sed -i "s/hostname='.*'/hostname='OpenWrt-GXNAS'/g" ./package/base-files/files/bin/config_generate
 
 # 修改默认IP
-sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/files/bin/config_generate
-sed -i 's/192.168.1.1/192.168.1.11/g' package/base-files/luci2/bin/config_generate
+sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.18.1/g' package/base-files/luci2/bin/config_generate
 
 # 设置密码为空（安装固件时无需密码登陆，然后自己修改想要的密码）
 sed -i '/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF./d' package/lean/default-settings/files/zzz-default-settings
@@ -56,6 +56,59 @@ if [ "$curl_ver" != "8.9.1" ]; then
     rm -rf feeds/packages/net/curl
     cp -rf $GITHUB_WORKSPACE/personal/curl feeds/packages/net/curl
 fi
+
+# 报错修复
+rm -rf package/feeds/gxnas/shadowsocksr-libev
+rm -rf feeds/packages/utils/v2dat
+rm -rf package/feeds/packages/adguardhome
+rm -rf feeds/luci/applications/luci-app-turboacc
+merge_package master https://github.com/xiangfeidexiaohuo/extra-ipk package/custom luci-app-adguardhome patch/luci-app-turboacc patch/wall-luci/lua-maxminddb patch/wall-luci/luci-app-vssr
+
+# luci-app-adbyby-plus
+rm -rf feeds/packages/net/adbyby-plus
+rm -rf feeds/luci/applications/luci-app-adbyby-plus
+git clone https://github.com/kiddin9/kwrt-packages
+mkdir -p package/luci-app-adbyby-plus
+mv kwrt-packages/luci-app-adbyby-plus package/luci-app-adbyby-plus
+rm -rf kwrt-packages
+
+# frpc frps
+rm -rf feeds/luci/applications/{luci-app-frpc,luci-app-frps,luci-app-hd-idle,luci-app-adblock,luci-app-filebrowser}
+merge_package master https://github.com/immortalwrt/luci package/custom applications/luci-app-filebrowser applications/luci-app-syncdial applications/luci-app-eqos applications/luci-app-nps applications/luci-app-nfs applications/luci-app-frpc applications/luci-app-frps applications/luci-app-hd-idle applications/luci-app-adblock applications/luci-app-socat
+
+# homeproxy
+git clone --depth=1 https://github.com/muink/luci-app-homeproxy.git package/luci-app-homeproxy
+
+# mihomo
+git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo package/luci-app-mihomo
+
+# mosdns
+rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/luci-app-mosdns
+git clone --depth=1 -b v5 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
+
+# passwall
+rm -rf feeds/luci/applications/luci-app-passwall
+merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
+
+# passwall2
+# merge_package main https://github.com/xiaorouji/openwrt-passwall2 package/custom luci-app-passwall2
+
+# openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+merge_package master https://github.com/vernesong/OpenClash package/custom luci-app-openclash
+# merge_package dev https://github.com/vernesong/OpenClash package/custom luci-app-openclash
+# 编译 po2lmo (如果有po2lmo可跳过)
+pushd package/custom/luci-app-openclash/tools/po2lmo
+make && sudo make install
+popd
+
+# argon 主题
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/applications/luci-app-argon-config
+git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+git clone --depth=1 -b js https://github.com/lwb1978/luci-theme-kucat package/luci-theme-kucat
 
 # 更改argon主题背景
 cp -f $GITHUB_WORKSPACE/personal/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
