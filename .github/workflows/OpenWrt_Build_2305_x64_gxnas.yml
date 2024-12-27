@@ -400,13 +400,13 @@ jobs:
                 "jump_list": [
                   {
                     "type": 1,
-                    "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_test",
+                    "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_gxnas",
                     "title": "固件发布地址"
                   }
                 ],
                 "card_action": {
                   "type": 1,
-                  "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_test"
+                  "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_gxnas"
                 }
               }
             }'
