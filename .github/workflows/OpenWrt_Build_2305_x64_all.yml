@@ -376,7 +376,7 @@ jobs:
                     - 🚀 内核版本: ${{ env.KERNEL }}\n
                     - 🌐 默认地址：192.168.18.1\n
                     - 🧊 更新时间：${{env.release}}",
-                  "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_all"
+                  "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/${{ env.FILE_NAME }}"
                 }
               ]
             }
