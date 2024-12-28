@@ -358,59 +358,26 @@ jobs:
           https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/${{ env.FILE_NAME }}
 
     - name: Enterprise WeChat notification upload success
-      if: steps.compile.outputs.status == 'success' && env.WECHAT_WORK_PUSH == 'true'
+      if: env.WECHAT_WORK_PUSH == 'true'
       run: |
         curl -X POST "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${{ secrets.WEBHOOK_SEND_KEY }}" \
         -H "Content-Type: application/json" \
         -d '{
-              "msgtype": "template_card",
-              "template_card": {
-                "card_type": "news_notice",
-                "source": {
-                  "icon_url": "https://raw.githubusercontent.com/gxnas/OpenWrt_Build_x64/refs/heads/main/personal/logo.png",
-                  "desc": "OpenWrt 编译成功通知"
-                },
-                "main_title": {
-                  "title": "${{ env.FILE_NAME }}-${{ env.KERNEL }} 编译完成",
-                  "desc": "固件名称：${{ env.FILE_NAME }}-${{ env.KERNEL }}"
-                },
-                "emphasis_content": {
-                  "title": "${{ env.KERNEL }}",
-                  "desc": "内核版本"
-                },
-                "sub_title_text": "查看更多详情",
-                "horizontal_content_list": [
-                  {
-                    "keyname": "固件大小",
-                    "value": "Kernel=32M，rootfs=968M"
-                  },
-                  {
-                    "keyname": "平台架构",
-                    "value": "${{ env.PRODUCT_NAME }}"
-                  },
-                  {
-                    "keyname": "源码分支",
-                    "value": "${{ env.REPO_BRANCH }}"
-                  },
-                  {
-                    "keyname": "更新时间",
-                    "value": "${{ env.date }}"
-                  }
-                ],
-                "jump_list": [
-                  {
-                    "type": 1,
-                    "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_soot",
-                    "title": "固件发布地址"
-                  }
-                ],
-                "card_action": {
-                  "type": 1,
-                  "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/OpenWrt_2305_x64_soot"
+            "msgtype": "news",
+            "news": {
+              "articles": [
+                {
+                  "title": "♨️ 【${{ env.FILE_NAME }}】项目编译完成 ♨️",
+                  "description": "- ❀  固件名称：${{ env.FILE_NAME }}-${{ env.KERNEL }}\n
+                    - 🔴 固件大小：Kernel=32M，rootfs=968M\n
+                    - 💻 平台架构: ${{ env.PRODUCT_NAME }}\n
+                    - ⚽ 固件源码: ${{ env.REPO_URL }}\n
+                    - 💝 源码分支: ${{ env.REPO_BRANCH }}\n
+                    - 🚀 内核版本: ${{ env.KERNEL }}\n
+                    - 🌐 默认地址：192.168.1.11\n
+                    - 🧊 更新时间：${{env.release}}",
+                  "url": "https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/${{ env.FILE_NAME }}"
                 }
-              }
-            }'
-
-          - 🧊 更新时间：${{ env.date }}
-          - 🎈 源码哈希值：${{ env.hash }}
-          https://github.com/gxnas/OpenWrt_Build_x64/releases/tag/${{ env.FILE_NAME }}
+              ]
+            }
+          }'
