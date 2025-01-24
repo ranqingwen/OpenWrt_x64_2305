@@ -4,7 +4,7 @@
 mkdir -p files/bin
 
 # 创建脚本文件
-cat << 'EOF' > files/bin/OpenWrt-GXNAS
+cat << 'EOF' > files/bin/OpenWrt
 #!/bin/bash
 
 # 获取内核版本
