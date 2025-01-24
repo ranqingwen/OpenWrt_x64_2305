@@ -1,9 +1,9 @@
 #!/bin/bash
 #===============================================
-# Description: 2305_x64_all DIY script part 2
-# File name: 2305_x64_all_diy-part2.sh
+# Description: 2305_x64 DIY script part 2
+# File name: 2305_x64_diy-part2.sh
 # Lisence: MIT
-# By: GXNAS
+# By: ranqw
 #===============================================
 
 echo "开始 DIY2 配置……"
