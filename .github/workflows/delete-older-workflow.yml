@@ -24,6 +24,6 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           repository: ${{ github.repository }}
           retain_days: 0
-#用于设置某些数据或操作记录的保留天数
+#数据或操作记录的保留天数
           keep_minimum_runs: 1
-#表示保留运行记录或实例的数量
+#保留运行记录或实例的数量
