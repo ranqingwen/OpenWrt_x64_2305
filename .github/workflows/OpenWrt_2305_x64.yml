@@ -104,6 +104,15 @@ jobs:
         echo "系统空间        类型   总数  已用  可用  使用率"
         df -Th
 
+    - name: 密匙检测（密匙为空则退出）
+      run: |
+        cd ${GITHUB_WORKSPACE}
+        if [[ -z "${{ secrets.GH_TOKEN }}" ]]; then
+          echo "您没有设置仓库密匙，请按教程设置好密匙再来"
+          echo "REPO_TOKEN密匙制作教程：https://git.io/jm.md"
+          exit 1
+        fi
+
     - name: 部署编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -232,6 +241,28 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: 清理Actions空间
+      continue-on-error: true
+      if: env.GH_TOKEN
+      uses: small-5/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_min: 2
+    
+    - name: 清理releases
+      continue-on-error: true
+      if: env.GH_TOKEN
+      uses: ophub/delete-releases-workflows@main
+      with:
+        delete_releases: true
+      #releases_keep_keyword: targz/Update
+        releases_keep_latest: 1
+        delete_tags: true
+        delete_workflows: true
+        workflows_keep_day: 15
+        gh_token: ${{ secrets.GH_TOKEN }}
+
     - name: 编译固件
       id: compile
       run: |
@@ -326,7 +357,7 @@ jobs:
           - 🎈 源码哈希值：${{ env.hash }}
         artifacts: ${{ env.FIRMWARE }}/*uefi*
 
-    - name: Completion time 
+    - name: 完成时间 
       run: |
         echo "END=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         end=$(date +%s)
@@ -337,7 +368,7 @@ jobs:
         HMS=`echo ${hour}:${min}:${sec}`
         echo "time=$HMS" >> $GITHUB_ENV
 
-    - name: Telegram notification upload success
+    - name: Telegram通知
       if: steps.compile.outputs.status == 'success' && env.TELEGRAM_WORK_PUSH == 'true'
       uses: appleboy/telegram-action@master
       with:
@@ -357,7 +388,7 @@ jobs:
           - 🎈 源码哈希值：${{ env.hash }}
           https://github.com/ranqingwen/Lede25-autobuild/releases/tag/${{ env.FILE_NAME }}
 
-    - name: Enterprise WeChat notification upload success
+    - name: 企业微信通知
       if: env.WECHAT_WORK_PUSH == 'true'
       run: |
         curl -X POST "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${{ secrets.WEBHOOK_SEND_KEY }}" \
