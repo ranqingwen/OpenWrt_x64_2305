@@ -33,7 +33,7 @@ sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/file
 sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
 
 # 默认 shell 为 bash
-sed -i 's/\/bin\/ash/\/bin\/bash/g' package/base-files/files/etc/passwd
+# sed -i 's/\/bin\/ash/\/bin\/bash/g' package/base-files/files/etc/passwd
 
 # samba解除root限制
 sed -i 's/invalid users = root/#&/g' feeds/packages/net/samba4/files/smb.conf.template
@@ -58,11 +58,11 @@ if [ "$curl_ver" != "8.9.1" ]; then
 fi
 
 # 报错修复
-rm -rf package/feeds/gxnas/shadowsocksr-libev
+# rm -rf package/feeds/gxnas/shadowsocksr-libev
 rm -rf feeds/packages/utils/v2dat
-rm -rf package/feeds/packages/adguardhome
+# rm -rf package/feeds/packages/adguardhome
 rm -rf feeds/luci/applications/luci-app-turboacc
-merge_package master https://github.com/xiangfeidexiaohuo/extra-ipk package/custom luci-app-adguardhome patch/luci-app-turboacc patch/wall-luci/lua-maxminddb patch/wall-luci/luci-app-vssr
+merge_package master https://github.com/xiangfeidexiaohuo/extra-ipk package/custom patch/luci-app-turboacc patch/wall-luci/lua-maxminddb
 
 # luci-app-adbyby-plus
 # rm -rf feeds/packages/net/adbyby-plus
@@ -80,7 +80,7 @@ merge_package master https://github.com/immortalwrt/luci package/custom applicat
 # git clone --depth=1 https://github.com/muink/luci-app-homeproxy.git package/luci-app-homeproxy
 
 # mihomo
-git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo package/luci-app-mihomo
+# git clone --depth=1 https://github.com/morytyann/OpenWrt-mihomo package/luci-app-mihomo
 
 # mosdns
 rm -rf feeds/packages/net/mosdns
@@ -88,8 +88,8 @@ rm -rf feeds/luci/applications/luci-app-mosdns
 git clone --depth=1 -b v5 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
 
 # passwall
-rm -rf feeds/luci/applications/luci-app-passwall
-merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
+# rm -rf feeds/luci/applications/luci-app-passwall
+# merge_package main https://github.com/xiaorouji/openwrt-passwall package/custom luci-app-passwall
 
 # passwall2
 # merge_package main https://github.com/xiaorouji/openwrt-passwall2 package/custom luci-app-passwall2
