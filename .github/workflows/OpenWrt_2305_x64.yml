@@ -353,6 +353,15 @@ jobs:
         HMS=`echo ${hour}:${min}:${sec}`
         echo "time=$HMS" >> $GITHUB_ENV
 
+    - name: 删除workflow，清理工作流
+      continue-on-error: true
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        token: ${{ secrets.GH_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_min: 0
+        keep_minimum_runs: 1
+
     - name: Telegram通知
       if: steps.compile.outputs.status == 'success' && env.TELEGRAM_WORK_PUSH == 'true'
       uses: appleboy/telegram-action@master
