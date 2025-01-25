@@ -46,7 +46,7 @@ jobs:
     outputs:
       output: ${{ steps.outputunifreq.outputs.unifreq }}
     steps:
-    - name: Get Commit Hash
+    - name: 获取哈希值
       id: getHash
       run: |
         git clone --depth 1 $REPO_URL_Lede -b $REPO_BRANCH_Lede $REPO_PATH_Lede
@@ -54,25 +54,25 @@ jobs:
         echo "commitHash_2305_x64=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         cd
 
-    - name: Show Commit Head and Combination Heads
+    - name: 显示提交头部和组合头部
       id: combHeader
       run: |
         echo "commitHash_2305_x64: ${{ steps.getHash.outputs.commitHash_2305_x64 }}"
 
-    - name: Compare Commit Hash
+    - name: 比较提交哈希值
       id: cacheHash
       uses: actions/cache@main
       with:
         path: .commitHash_2305_x64
         key: HEAD-${{ steps.getHash.outputs.commitHash_2305_x64 }}
 
-    - name: Set output for next job
+    - name: 为下一个任务设置输出
       id: outputunifreq
       if: steps.cacheHash.outputs.cache-hit == 'true'
       run: |
         echo "unifreq=hello" >> $GITHUB_OUTPUT
 
-    - name: Save New Commit Hash
+    - name: 保存新提交哈希值
       if: steps.cacheHash.outputs.cache-hit != 'true'
       run: |
         echo ${{ steps.getHash.outputs.commitHash_2305_x64 }} | tee .commitHash_2305_x64
@@ -83,10 +83,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout
+    - name: 检验
       uses: actions/checkout@main
 
-    - name: Check server configuration
+    - name: 检查服务器配置
       run: |
         echo "警告⚠"
         echo "分配的服务器性能有限，若选择的插件过多，务必注意CPU性能！"
@@ -104,7 +104,7 @@ jobs:
         echo "系统空间        类型   总数  已用  可用  使用率"
         df -Th
 
-    - name: Initialization environment
+    - name: 部署编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -124,7 +124,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         df -Th
 
-    - name: Create VG & LV
+    - name: 创建卷组和逻辑卷
       run: |
         mnt_size=$(expr $(df -h /mnt | tail -1 | awk '{print $4}' | sed 's/[[:alpha:]]//g' | sed 's/\..*//') - 1)
         root_size=$(expr $(df -h / | tail -1 | awk '{print $4}' | sed 's/[[:alpha:]]//g' | sed 's/\..*//') - 4)
@@ -138,14 +138,14 @@ jobs:
         sudo lvcreate -n runner -l 100%FREE github
         sudo mkfs.xfs /dev/github/runner
 
-    - name: Mount LV
+    - name: 挂载逻辑卷
       run: |
         sudo mkdir -p /builder
         sudo mount /dev/github/runner /builder
         sudo chown -R runner.runner /builder
         df -Th
 
-    - name: Clone source code
+    - name: 克隆源代码
       working-directory: /builder
       run: |
         df -hT $PWD
@@ -164,20 +164,20 @@ jobs:
         echo "TAG=$(date "+%Y%m%d")" >> $GITHUB_ENV
         echo "start=$(date +%s)" >> $GITHUB_ENV
 
-    - name: Load custom feeds
+    - name: 加载自定义源
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: Update feeds
+    - name: 更新插件源
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: 安装插件源
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Load custom configuration
+    - name: 加载自定义设置
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
@@ -194,7 +194,7 @@ jobs:
         
         #sed -i 's/KERNEL_TESTING_PATCHVER:=*.*/KERNEL_TESTING_PATCHVER:=6.6/g' target/linux/x86/Makefile
 
-    - name: Output compilation information
+    - name: 编译信息
       run: |
         cd openwrt
         echo "系统空间        类型  总数  已用  可用  使用率"
@@ -223,7 +223,7 @@ jobs:
         echo
         cat .config
 
-    - name: Download package
+    - name: 下载包
       id: package
       run: |
         cd openwrt
@@ -232,7 +232,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile the firmware
+    - name: 编译固件
       id: compile
       run: |
         cd openwrt
@@ -243,7 +243,7 @@ jobs:
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
-    - name: Check space usage
+    - name: 检查空间使用情况
       run: |
         echo "=========================================="
         echo "----------------空间使用-------------------"
@@ -255,35 +255,35 @@ jobs:
         du -h --max-depth=1 openwrt/build_dir
         du -h --max-depth=1 openwrt/bin
 
-    - name: Organize firmware files
+    - name: 编辑固件文件
       id: organizer
       run: |
         mkdir -p ./artifact/buildinfo
         cp -rf openwrt/.config ./artifact/buildinfo/x86.config
         cp -rf $(find openwrt/bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
 
-    - name: Upload bin directory
+    - name: 上传 bin 目录
       uses: actions/upload-artifact@main
       if: env.UPLOAD_BIN_DIR == 'true' && steps.compile.outputs.status == 'success'
       with:
         name: ${{ env.FILE_NAME }}-${{ env.KERNEL }}_bin-${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
-    - name: Upload config
+    - name: 上传配置
       uses: actions/upload-artifact@main
       if: env.UPLOAD_CONFIG == 'true' && steps.compile.outputs.status == 'success'
       with:
         name: ${{ env.FILE_NAME }}.config
         path: ./artifact/buildinfo/
 
-    - name: Delete files
+    - name: 重命名文件
       run: |
         cd openwrt
         bash  rename.sh
         Kernel=`grep "_uefi.img.gz" wget/open_dev_md5 | cut -d - -f 2 | cut -d _ -f 2 `
         echo "KERNEL=$Kernel" >> $GITHUB_ENV
 
-    - name: Organize files
+    - name: 整理文件
       id: organize
       if: steps.compile.outputs.status == 'success'
       run: |
@@ -296,14 +296,14 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: Upload firmware directory
+    - name: 上传到firmware
       uses: actions/upload-artifact@main
       if: env.UPLOAD_FIRMWARE == 'true' && steps.organize.outputs.status == 'success'
       with:
         name: ${{ env.FILE_NAME }}-${{ env.KERNEL }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Create release
+    - name: 发布到release
       id: release
       uses: ncipollo/release-action@v1
       if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success'
