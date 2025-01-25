@@ -22,7 +22,7 @@ jobs:
         uses: dev-drprasad/delete-older-releases@v0.2.0
         with:
           repo: ${{ github.repository }}
-          keep_latest: 3
+          keep_latest: 2
 #保留的版本数量
           delete_tags: true
 #表示是否删除与被删除版本关联的标签
