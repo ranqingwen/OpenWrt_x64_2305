@@ -65,7 +65,7 @@ print_header() {
 # 显示菜单
 show_menu() {
     echo "=============================================="
-    echo -e "\e[31m OpenWrt-GXNAS\e[0m \e[35m快捷命令菜单（Shortcut Command Menu）\e[0m         "
+    echo -e "\e[31m OpenWrt\e[0m \e[35m快捷命令菜单（Shortcut Command Menu）\e[0m         "
     echo "=============================================="
     echo -e "\e[33m1. 更改 LAN 口 IP 地址（Change LAN port IP address）\e[0m"
     echo -e "\e[33m2. 更改管理员密码（Change administrator password）\e[0m"
@@ -281,4 +281,4 @@ show_menu
 EOF
 
 # 设置脚本权限
-chmod +x files/bin/OpenWrt-GXNAS
+chmod +x files/bin/OpenWrt
