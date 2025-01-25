@@ -1,7 +1,7 @@
 #!/bin/bash
 #===============================================
-# Description: 2305_x64 DIY script part 2
-# File name: 2305_x64_diy-part2.sh
+# Description: openwrt_2305_x64 DIY script part 2
+# File name: openwrt_2305_x64_diy-part2.sh
 # Lisence: MIT
 # By: ranqw
 #===============================================
@@ -111,16 +111,16 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config package/l
 git clone --depth=1 -b js https://github.com/lwb1978/luci-theme-kucat package/luci-theme-kucat
 
 # 更改argon主题背景
-cp -f $GITHUB_WORKSPACE/personal/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+# cp -f $GITHUB_WORKSPACE/personal/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # 显示增加编译时间
 sed -i "s/DISTRIB_REVISION='R[0-9]\+\.[0-9]\+\.[0-9]\+'/DISTRIB_REVISION='@R$build_date'/g" package/lean/default-settings/files/zzz-default-settings
 sed -i 's/Openwrt/Lede by ranqw build/g' package/lean/default-settings/files/zzz-default-settings
 
 # 修改右下角脚本版本信息
-sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/Openwrt/Lede by ranqw build @R'"$build_date"'/' package/luci-theme-argon/luasrc/view/themes/argon/footer.htm
+sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" target=\"_blank\">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)<\/a>/OpenWrt_2305_x64 by ranqw build @R'"$build_date"'/' package/luci-theme-argon/luasrc/view/themes/argon/footer.htm
 sed -i 's|<%= ver.distversion %>|<a href="https://github.com/ranqingwen/Lede25-autobuild/releases" target="_blank">👆点这里下载最新版本</a>|' package/luci-theme-argon/luasrc/view/themes/argon/footer.htm
-sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|Openwrt/Lede by ranqw build @R$build_date|" package/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
+sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt_2305_x64 by ranqw build @R$build_date|" package/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
 
 # 修改欢迎banner
 cp -f $GITHUB_WORKSPACE/personal/banner package/base-files/files/etc/banner
