@@ -15,16 +15,16 @@ on:
         required: true
         default: 'true'
   schedule:
-    - cron: 5 0 * * 5
+    - cron: 5 0 * * 4
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds_config/lede.feeds.conf.default
-  CONFIG_FILE: config/lede_config/2305_x64.config
+  CONFIG_FILE: config/lede_config/openwrt_2305_x64.config
   CONFIGS: config/lede_config
-  DIY_P1_SH: diy_script/lede_diy/x86/2305_x64_diy-part1.sh
-  DIY_P2_SH: diy_script/lede_diy/x86/2305_x64_diy-part2.sh
+  DIY_P1_SH: diy_script/lede_diy/x86/openwrt_2305_x64_diy-part1.sh
+  DIY_P2_SH: diy_script/lede_diy/x86/openwrt_2305_x64_diy-part2.sh
   CLASH_KERNEL: amd64
   UPLOAD_BIN_DIR: false
   UPLOAD_CONFIG: true
