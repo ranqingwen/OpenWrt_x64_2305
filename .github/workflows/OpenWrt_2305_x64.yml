@@ -202,7 +202,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         $GITHUB_WORKSPACE/diy_script/preset-clash-core.sh $CLASH_KERNEL
-        $GITHUB_WORKSPACE/diy_script/preset-OpenWrt.sh $CLASH_KERNEL
+        $GITHUB_WORKSPACE/diy_script/preset-openwrt.sh $CLASH_KERNEL
         
         sed -i 's/CONFIG_LINUX.*/CONFIG_LINUX_6_6=y/g' .config
         
