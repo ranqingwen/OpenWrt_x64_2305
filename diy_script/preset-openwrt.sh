@@ -281,4 +281,4 @@ show_menu
 EOF
 
 # 设置脚本权限
-chmod +x files/bin/OpenWrt
+chmod +x files/bin/openwrt
