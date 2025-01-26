@@ -4,7 +4,7 @@
 mkdir -p files/bin
 
 # 创建脚本文件
-cat << 'EOF' > files/bin/OpenWrt
+cat << 'EOF' > files/bin/openwrt
 #!/bin/bash
 
 # 获取内核版本
