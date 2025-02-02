@@ -1,5 +1,5 @@
 <div align="center">
-<img width="768" src="https://github.com/gxnas/OpenWrt_Build_x64/blob/main/personal/logo.png"/>
+<img width="768" src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/logo.png"/>
 <h1>OpenWrt_Build_x64</h1>
 </div>
 
@@ -45,5 +45,5 @@
 #### 7、虚拟机安装的，请确保文件名和路径没有中文或者特殊符号，否则转换文件时有可能转换不成功。
 
 <a href="#readme">
-<img src="https://github.com/gxnas/OpenWrt_Build_x64/blob/main/personal/return.svg" title="返回顶部" align="right"/>
+<img src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/return.svg" title="返回顶部" align="right"/>
 </a>
