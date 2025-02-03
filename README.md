@@ -1,8 +1,3 @@
-<div align="center">
-<img width="768" src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/logo.png"/>
-<h1>OpenWrt</h1>
-</div>
-
 ## 当前编译状态：
 | 源码+版本 | 固件编译状态 | 脚本文件 | 固件下载 |
 | :-------------: | :-------------: | :-------------: | :-------------: |
