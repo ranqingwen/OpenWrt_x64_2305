@@ -1,13 +1,12 @@
 <div align="center">
 <img width="768" src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/logo.png"/>
-<h1>OpenWrt_Build_x64</h1>
+<h1>OpenWrt</h1>
 </div>
 
 ## 当前编译状态：
 | 源码+版本 | 固件编译状态 | 脚本文件 | 固件下载 |
 | :-------------: | :-------------: | :-------------: | :-------------: |
 | [![](https://img.shields.io/badge/Lede-6.6-32C955.svg?logo=openwrt)](https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml) | <a href="https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml"><img src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml/badge.svg?style=flat" /></a> | [![](https://img.shields.io/badge/脚本-配置-orange.svg?logo=apache-spark)](https://github.com/ranqingwen/Lede25-autobuild/tree/main/diy_script/lede_diy/x86) | [![](https://img.shields.io/badge/下载-链接-blueviolet.svg?logo=hack-the-box)](https://github.com/ranqingwen/Lede25-autobuild/releases) |
-
 
 </br>
 
@@ -22,8 +21,8 @@
 -  ******最好不要跨大版本升级（比如1806升级到2305，或者6.1内核升级6.6），大版本更新建议采用全新安装方可获得最佳的体验******
 - 🛑 默认的IP地址：192.168.23.250；
 - 🛑 默认用户名：root，无密码；
-- 🛑 如需要更改Openwrt默认的IP，可以用root登录SSH下输入命令 vi /etc/config/network 修改文件，需要注意的是，在SSH界面下看到有root@OpenWrt:/#开头的字样方可操作；
-- 🛑 SSH界面可以输入openwrt可打开系统快捷命令菜单
+- 🛑 如需要更改OpenWrt默认的IP，可以用root登录SSH下输入命令 vi /etc/config/network 修改文件；
+- 🛑 SSH界面也可输入 openwrt 打开系统快捷命令菜单
 
 ==============================================
  OpenWrt 快捷命令菜单（Shortcut Command Menu）
