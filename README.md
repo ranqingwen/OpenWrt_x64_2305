@@ -14,7 +14,7 @@
 ## 项目说明 [![](https://github.com/gxnas/OpenWrt_Build_x64/blob/main/personal/describes.svg)](#项目说明-)
 - 固件编译使用的源代码来自：[![Lean](https://img.shields.io/badge/Lede-Lean-red.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede) 
 - 项目使用 Github Actions 拉取 [Lean](https://github.com/coolsnowwolf/lede) 的 `Openwrt-23.05（内核版本6.6）` 源码仓库进行云编译
--  本库编译的x86固件为squashfs格式（ext4 与squashfs 格式的区别： ext4 格式的rootfs 可以扩展磁盘空间大小，而squashfs 不能。 squashfs 格式的rootfs 可以使用重置功能（恢复出厂设置），而ext4 不能；）
+-  本库编译的x86固件为squashfs格式（ext4 与squashfs 格式的区别： ext4 格式的rootfs 可以扩展磁盘空间大小，而squashfs 不能。 squashfs 格式的rootfs 可以使用重置功能（恢复出厂设置），而ext4 不能）
 -  默认的固件容量：Kernel=32M、rootfs=968M，请确保安装OpenWrt的硬盘空间至少要有1G以上；
 -  文件名带有efi字样的固件支持Uefi和Legacy两种引导方式启动，文件名不含efi的固件仅支持Legacy传统引导方式启动；
 -  虚拟机安装的，请确保文件名和路径没有中文或者特殊符号，否则转换文件时有可能转换不成功；
@@ -23,6 +23,20 @@
 - 🛑 默认的IP地址：192.168.23.250；
 - 🛑 默认用户名：root，无密码；
 - 🛑 如需要更改Openwrt默认的IP，可以用root登录SSH下输入命令 vi /etc/config/network 修改文件，需要注意的是，在SSH界面下看到有root@OpenWrt:/#开头的字样方可操作；
+- 🛑 SSH界面可以输入openwrt可打开系统快捷命令菜单
+
+==============================================
+ OpenWrt 快捷命令菜单（Shortcut Command Menu）
+==============================================
+1. 更改 LAN 口 IP 地址（Change LAN port IP address）
+2. 更改管理员密码（Change administrator password）
+3. 重置网络和切换默认主题（Reset network and Switch default theme）
+4. 重启系统（Reboot）
+5. 关闭系统（Shutdown）
+6. 释放内存（Release memory）
+7. 恢复出厂设置（Restore factory settings）
+0/q. 退出本快捷菜单（Exit shortcut menu）
+
 ----
 - REPO_TOKEN密匙制作教程：https://git.io/jm.md
 - 云编译需要 [在此](https://github.com/settings/tokens) 创建个```token```,勾选：```repo```, ```workflow```，保存所得的key
