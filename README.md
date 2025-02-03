@@ -28,15 +28,11 @@
 
 - 🛑 3、默认用户名：root，无密码；
 
-#### 4、如需要更改Openwrt默认的IP，可以用root登录SSH下输入命令 vi /etc/config/network 修改文件，需要注意的是，在SSH界面下看到有root@OpenWrt:/#开头的字样方可操作；
+- 🛑 4、如需要更改Openwrt默认的IP，可以用root登录SSH下输入命令 vi /etc/config/network 修改文件，需要注意的是，在SSH界面下看到有root@OpenWrt:/#开头的字样方可操作；
 
-#### 6、安装硬盘不可低于1G；
+- 🛑 6、安装硬盘不可低于1G；
 
-#### 7、虚拟机安装的，请确保文件名和路径没有中文或者特殊符号，否则转换文件时有可能转换不成功。
-
-<a href="#readme">
-<img src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/return.svg" title="返回顶部" align="right"/>
-</a>
+- 🛑 7、虚拟机安装的，请确保文件名和路径没有中文或者特殊符号，否则转换文件时有可能转换不成功。
 
 ----
 - REPO_TOKEN密匙制作教程：https://git.io/jm.md
@@ -46,3 +42,6 @@
 - Telegram通知```Settings```->```Secrets```中添加名字为```TELEGRAM_TO```和```TELEGRAM_TOKEN```，值分别为BOT_USER _ID和BOT_TOKEN
 - 企业微信机器人通知```Settings```->```Secrets```中添加个名字为```WEBHOOK_SEND_KEY```，值为企业微信机器人https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=后面的值
 ----
+<a href="#readme">
+<img src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/return.svg" title="返回顶部" align="right"/>
+</a>
