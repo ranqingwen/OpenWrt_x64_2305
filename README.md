@@ -2,11 +2,14 @@
 <img width="768" src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/personal/logo.png"/>
 <h1>OpenWrt</h1>
 </div>
+
 ## 当前编译状态：
 | 源码+版本 | 固件编译状态 | 脚本文件 | 固件下载 |
 | :-------------: | :-------------: | :-------------: | :-------------: |
 | [![](https://img.shields.io/badge/Lede-6.6-32C955.svg?logo=openwrt)](https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml) | <a href="https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml"><img src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml/badge.svg?style=flat" /></a> | [![](https://img.shields.io/badge/脚本-配置-orange.svg?logo=apache-spark)](https://github.com/ranqingwen/Lede25-autobuild/tree/main/diy_script/lede_diy/x86) | [![](https://img.shields.io/badge/下载-链接-blueviolet.svg?logo=hack-the-box)](https://github.com/ranqingwen/Lede25-autobuild/releases) |
+
 </br>
+
 ## 项目说明 [![](https://github.com/gxnas/OpenWrt_Build_x64/blob/main/personal/describes.svg)](#项目说明-)
 - 固件编译使用的源代码来自：[![Lean](https://img.shields.io/badge/Lede-Lean-red.svg?style=flat&logo=appveyor)](https://github.com/coolsnowwolf/lede) 
 - 项目使用 Github Actions 拉取 [Lean](https://github.com/coolsnowwolf/lede) 的 `Openwrt-23.05（内核版本6.6）` 源码仓库进行云编译
