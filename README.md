@@ -6,7 +6,7 @@
 ## 当前编译状态：
 | 源码+版本 | 固件编译状态 | 脚本文件 | 固件下载 |
 | :-------------: | :-------------: | :-------------: | :-------------: |
-| [![](https://img.shields.io/badge/Lede-6.6-32C955.svg?logo=openwrt)](https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml) | <a href="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_all.yml"><img src="https://github.com/gxnas/OpenWrt_Build_x64/actions/workflows/OpenWrt_Build_2305_x64_all.yml/badge.svg?style=flat" /></a> | [![](https://img.shields.io/badge/脚本-配置-orange.svg?logo=apache-spark)](https://github.com/ranqingwen/Lede25-autobuild/tree/main/diy_script/lede_diy/x86) | [![](https://img.shields.io/badge/下载-链接-blueviolet.svg?logo=hack-the-box)](https://github.com/ranqingwen/Lede25-autobuild/releases) |
+| [![](https://img.shields.io/badge/Lede-6.6-32C955.svg?logo=openwrt)](https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml) | <a href="https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml"><img src="https://github.com/ranqingwen/Lede25-autobuild/blob/main/.github/workflows/OpenWrt_2305_x64.yml/badge.svg?style=flat" /></a> | [![](https://img.shields.io/badge/脚本-配置-orange.svg?logo=apache-spark)](https://github.com/ranqingwen/Lede25-autobuild/tree/main/diy_script/lede_diy/x86) | [![](https://img.shields.io/badge/下载-链接-blueviolet.svg?logo=hack-the-box)](https://github.com/ranqingwen/Lede25-autobuild/releases) |
 
 
 </br>
