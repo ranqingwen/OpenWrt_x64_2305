@@ -4,7 +4,7 @@
 # By：ranqw
 #===============================================
 
-name: 2305_x64
+name: OpenWrt_x64
 
 on:
   repository_dispatch:
