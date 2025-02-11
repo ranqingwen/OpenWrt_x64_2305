@@ -40,7 +40,7 @@ env:
   TELEGRAM_WORK_PUSH: false
   WECHAT_WORK_PUSH: false
   TZ: Asia/Shanghai
-  FILE_NAME: 2305_x64
+  FILE_NAME: OpenWrt
   PRODUCT_NAME: x86_64
 
 jobs:
