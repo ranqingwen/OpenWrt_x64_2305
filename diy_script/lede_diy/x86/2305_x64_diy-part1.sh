@@ -7,6 +7,9 @@
 #===============================================
 
 # Add a feed source
+
+# rm -rf  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk
+# rm -rf  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.vmdk
 sed -i "/helloworld/d" feeds.conf.default
 sed -i '$a src-git kenzok8 https://github.com/kenzok8/small-package' feeds.conf.default
 
@@ -17,8 +20,6 @@ cat>rename.sh<<-\EOF
 rm -rf  bin/targets/x86/64/config.buildinfo
 rm -rf  bin/targets/x86/64/feeds.buildinfo
 rm -rf  bin/targets/x86/64/openwrt-x86-64-generic-kernel.bin
-rm -rf  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk
-rm -rf  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.vmdk
 rm -rf  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-rootfs.img.gz
 rm -rf  bin/targets/x86/64/openwrt-x86-64-generic.manifest
 rm -rf  bin/targets/x86/64/sha256sums
@@ -52,16 +53,22 @@ elif [ "$str1" = "6.6" ];then
    if [ ! $ver66 ]; then
    mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_bios.img.gz
    mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_uefi.img.gz
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.vmdk       bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_bios.vmdk
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk  bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_uefi.vmdk
   else
    mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_bios.img.gz
    mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_uefi.img.gz
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.vmdk      bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_bios.vmdk
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.vmdk   bin/targets/x86/64/openwrt_x86-64_${str1}.${ver66}_uefi.vmdk
    fi
 fi
 #md5
 ls -l  "bin/targets/x86/64" | awk -F " " '{print $9}' > wget/open_dev_md5
 dev_version=`grep "_uefi.img.gz" wget/open_dev_md5 | cut -d - -f 2 | cut -d _ -f 2 `
 openwrt_dev=openwrt_x86-64_${dev_version}_bios.img.gz
+openwrt_dev=openwrt_x86-64_${dev_version}_bios.vmdk
 openwrt_dev_uefi=openwrt_x86-64_${dev_version}_uefi.img.gz
+openwrt_dev_uefi=openwrt_x86-64_${dev_version}_uefi.vmdk
 cd bin/targets/x86/64
 md5sum $openwrt_dev > openwrt_bios.md5
 md5sum $openwrt_dev_uefi > openwrt_uefi.md5
