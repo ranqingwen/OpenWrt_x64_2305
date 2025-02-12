@@ -122,7 +122,7 @@ sed -i 's/<a class=\"luci-link\" href=\"https:\/\/github.com\/openwrt\/luci\" ta
 sed -i 's|<a href="https://github.com/jerrykuku/luci-theme-argon" target="_blank">ArgonTheme <%# vPKG_VERSION %></a>|<a class="luci-link" href="https://github.com/ranqingwen/OpenWrt_x64_2305/releases" target="_blank">下载最新版</a>|' package/luci-theme-argon/luasrc/view/themes/argon/footer.htm
 
 # 修改登录界面脚本版本信息
-sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt by ranqw @R $build_date|" package/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
+sed -i "/<a class=\"luci-link\"/d; /<a href=\"https:\/\/github.com\/jerrykuku\/luci-theme-argon\"/d; s|<%= ver.distversion %>|OpenWrt/LEDE by ranqw @R$build_date|" package/luci-theme-argon/luasrc/view/themes/argon/footer_login.htm
 
 # 修改欢迎banner
 cp -f $GITHUB_WORKSPACE/personal/banner package/base-files/files/etc/banner
