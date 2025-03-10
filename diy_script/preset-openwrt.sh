@@ -74,7 +74,7 @@ show_menu() {
     echo -e "\e[33m5. 关闭系统（Shutdown）\e[0m"
     echo -e "\e[33m6. 释放内存（Release memory）\e[0m"
     echo -e "\e[33m7. 恢复出厂设置（Restore factory settings）\e[0m"
-    echo "0/q. 退出本快捷菜单（Exit shortcut menu）"
+    echo -e "\e[33m0. 退出本快捷菜单（Exit shortcut menu）"
     echo "=============================================="
     printf "请输入功能编号(Enter the function number): "
     read choice
@@ -86,7 +86,7 @@ show_menu() {
         5) shutdown_system ;;
         6) echo "正在清理内存缓存..."; sync && echo 3 > /proc/sys/vm/drop_caches; echo "内存缓存已清理"; show_menu ;;
         7) reset_config ;;
-        0|q|Q) exit 0 ;;
+        0) exit 0 ;;
         *) echo "无效选项，请重新输入"; show_menu ;;
     esac
 }
