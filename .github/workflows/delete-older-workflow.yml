@@ -25,5 +25,5 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: 0
 #数据或操作记录的保留天数
-          keep_minimum_runs: 0
+          keep_minimum_runs: 1
 #保留运行记录或实例的数量
