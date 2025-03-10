@@ -22,7 +22,7 @@
 ==============================================
  OpenWrt 快捷命令菜单（Shortcut Command Menu）
 ==============================================
-1.更改 LAN 口 IP 地址（Change LAN port IP address）
+1.更改 LAN 口 IP 地址（Change LAN port IP address）<br>
 2.更改管理员密码（Change administrator password）
 3.重置网络和切换默认主题（Reset network and Switch default theme）
 4.重启系统（Reboot）
