@@ -22,7 +22,6 @@
 ==============================================
  OpenWrt 快捷命令菜单（Shortcut Command Menu）
 ==============================================
-1. 在线更新固件或转换其他作者固件(zai xian sheng ji gu jian)
 1.更改 LAN 口 IP 地址（Change LAN port IP address）<br>
 2.更改管理员密码（Change administrator password）<br>
 3.重置网络和切换默认主题（Reset network and Switch default theme）<br>
