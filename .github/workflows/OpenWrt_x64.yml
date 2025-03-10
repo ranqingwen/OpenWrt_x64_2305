@@ -344,8 +344,8 @@ jobs:
           ### 📒 固件信息
           - ⚽ 固件名称：${{ env.FILE_NAME }}-${{ env.KERNEL }}
           - 🔴 固件大小：Kernel=32M，rootfs=968M
-          - 💻 平台架构: ${{ env.PRODUCT_NAME }}
           - 🌻 固件源码: ${{ env.REPO_URL }}
+          - 💻 平台架构: ${{ env.PRODUCT_NAME }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🚀 内核版本: ${{ env.KERNEL }}
           - 🌐 默认地址：192.168.23.250
@@ -373,10 +373,10 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
           ♨️ 【${{ env.FILE_NAME }}】项目编译完成 ♨️
-          - ❀  固件名称：${{ env.FILE_NAME }}-${{ env.KERNEL }}
+          - ⚽ 固件名称：${{ env.FILE_NAME }}-${{ env.KERNEL }}
           - 🔴 固件大小：Kernel=32M，rootfs=968M
+          - 🌻 固件源码: ${{ env.REPO_URL }}
           - 💻 平台架构: ${{ env.PRODUCT_NAME }}
-          - ⚽ 固件源码: ${{ env.REPO_URL }}
           - 💝 源码分支: ${{ env.REPO_BRANCH }}
           - 🚀 内核版本: ${{ env.KERNEL }}
           - 🌐 默认地址：192.168.23.250
@@ -398,8 +398,8 @@ jobs:
                   "title": "♨️ 【${{ env.FILE_NAME }}】项目编译完成 ♨️",
                   "description": "- ❀  固件名称：${{ env.FILE_NAME }}-${{ env.KERNEL }}\n
                     - 🔴 固件大小：Kernel=32M，rootfs=968M\n
-                    - 💻 平台架构: ${{ env.PRODUCT_NAME }}\n
                     - ⚽ 固件源码: ${{ env.REPO_URL }}\n
+                    - 💻 平台架构: ${{ env.PRODUCT_NAME }}\n
                     - 💝 源码分支: ${{ env.REPO_BRANCH }}\n
                     - 🚀 内核版本: ${{ env.KERNEL }}\n
                     - 🌐 默认地址：192.168.23.250\n
