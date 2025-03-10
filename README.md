@@ -28,7 +28,7 @@
 4. 重启系统（Reboot）
 5. 关闭系统（Shutdown）
 6. 释放内存（Release memory）
-7. 恢复出厂设置（Restore factory settings）
+-7. 恢复出厂设置（Restore factory settings）
 - 0. 退出本快捷菜单（Exit shortcut menu）
 
 ----
